@@ -5,48 +5,62 @@ import com.github.javafaker.Faker;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Controlador {
 
     public static void main(String[] args) {
 
-        int registros, hilos, contador;
-        Faker faker = new Faker();
-
+        float resto = 0;
+        int registros = 0, hilos = 0, contador;
+        boolean mismatch = false;
         Scanner teclado = new Scanner(System.in);
-        System.out.print("Introduce el numero de registros a introducir: ");
-        registros = teclado.nextInt();
-        teclado.nextLine();
 
-        System.out.print("Introduce el numero de hilos a usar: ");
-        hilos = teclado.nextInt();
-        teclado.nextLine();
+        do {
 
-        for(int x = 1; x <= registros; x++){
+            try {
 
-        try {
+                System.out.print("Introduce el numero de registros a introducir: ");
+                registros = teclado.nextInt();
+                teclado.nextLine();
 
-            String email = faker.internet().emailAddress();
-            int ingresos = (int) Math.floor(Math.random()*990+10);
+                System.out.print("Introduce el numero de hilos a usar: ");
+                hilos = teclado.nextInt();
+                teclado.nextLine();
 
-            String agregar = "INSERT INTO EMPLEADOS (EMAIL, INGRESOS) VALUES('"
-                    + email + "', '" + ingresos + "')";
-            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bbdd_psp_1",
-                    "DAM2020_PSP", "DAM2020_PSP");
-            Statement consulta = conexion.createStatement();
+                if (hilos > registros) {
+                    System.out.println("No puedes crear mas hilos que registros. Vuelve a introducir correctamente los datos\n");
+                } else if (hilos <= 0 || registros <= 0) {
+                    System.out.println("Introduce valores mayores a 0\n");
+                } else if (hilos > 20) {
+                    System.out.println("No puedes utilizar mas de 20 hilos. Vuelve a introducir correctamente los datos\n");
+                } else if (registros > 1000) {
+                    System.out.println("No puedes operar mas de 1000 registros. Vuelve a introducir correctamente los datos\n");
+                } else {
 
-            consulta.executeUpdate(agregar);
+                    for (int x = 0; x < hilos; x++) {
+                        System.out.println("Hilo: " + (x + 1) + " Realizara " + registros / hilos + " registros");
+                        new Hilo(registros / hilos).start();
+                    }
 
-            System.out.println("Empleado agregado correctamente");
+                    resto = registros / hilos;
+                    resto = Math.round(resto);
 
-            conexion.close();
+                    for (int i = 0; i == resto; i++) {
+                        System.out.println("Hilo: " + (i + 1) + " Realizara " + registros / hilos + " registros");
+                        new Hilo(Math.round(resto)).start();
+                    }
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        }
+                }
 
+            } catch (InputMismatchException ex) {
+                teclado.nextLine();
+                System.out.println("Introduce valores correctos");
+                mismatch = true;
+            }
+
+        } while (hilos > registros || hilos > 20 || registros > 1000 || hilos <= 0 || registros <= 0 || mismatch == true);
     }
 
 }
