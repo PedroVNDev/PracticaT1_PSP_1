@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="PraticaT1_PSP" />
+        <module name="Practica_T1_PSP_1" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="PraticaT1_PSP" target="1.5" />
+      <module name="Practica_T1_PSP_1" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
