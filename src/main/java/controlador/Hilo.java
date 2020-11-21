@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
-public class Hilo extends Thread{
+public class Hilo extends Thread {
 
     private int registros;
 
@@ -14,7 +14,9 @@ public class Hilo extends Thread{
         this.registros = registros;
     }
 
-    public void run(){
+    //Método que mediante la librería faker nos permite obtener emails y numeros aleatorios según los registros que hemos obtenido del usuario, conectamos.
+    //A la base de datos e insertamos la sentencia sql con los parámetros obtenidos al cerrar la conexión
+    public void run() {
 
         for (int x = 1; x <= registros; x++) {
 
@@ -36,10 +38,8 @@ public class Hilo extends Thread{
 
             } catch (Exception ex) {
                 ex.printStackTrace();
-            }finally {
-                System.out.println("Empleado agregado");
             }
-    }
+        }
 
     }
 }
