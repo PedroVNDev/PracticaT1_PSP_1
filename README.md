@@ -66,6 +66,7 @@ Contraseña: DAM2020_PSP
 ## Construido con 🛠️
 
 * [IntelliJ IDEA](https://www.jetbrains.com/es-es/idea/) - Entorno de desarrollo
+* [Faker](https://github.com/DiUS/java-faker) - Libreria de generación de datos aleatorios
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
 * Manos - Mi madre
 
