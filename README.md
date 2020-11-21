@@ -1,5 +1,5 @@
 # Aplicación PSP 1, 2ºDAM
-Aplicación que permite agregar empleados a una base de datos mediante Xampp MySQL utilizando hilos dinámicos
+Aplicación que permite agregar empleados con un email y salario aleatorios a una base de datos mediante Xampp MySQL utilizando hilos dinámicos
 
 
 ### Pre-requisitos 📋
