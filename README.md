@@ -5,7 +5,8 @@ Aplicación que permite agregar empleados con un email y salario aleatorios a un
 ### Pre-requisitos 📋
 
 * Java 8
-
+* Xampp MySql
+* Base de datos local BBDD_PSP_1
 
 ### Instalación 🔧
 
@@ -68,7 +69,8 @@ Contraseña: DAM2020_PSP
 * [IntelliJ IDEA](https://www.jetbrains.com/es-es/idea/) - Entorno de desarrollo
 * [Faker](https://github.com/DiUS/java-faker) - Libreria de generación de datos aleatorios
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
-* Manos - Mi madre
+* [Java](https://www.java.com/es/download/) - Lenguaje de programación
+* [Xampp MySql](https://www.apachefriends.org/blog/news-article-61070.html) - Base de datos local
 
 
 ## Creado por ✒️
